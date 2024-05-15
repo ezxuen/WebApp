@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Education Technologies</title>
+    <link rel="stylesheet" href="Styles.css">
+</head>
+<body>
+    <header>
+        <h1>Education Technologies</h1>
+        <nav>
+            <ul>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="technologyTable">
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Education Technologies. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function fetchTechnologyData() {
+            var request = new XMLHttpRequest();
+            request.onreadystatechange = function() {
+                if (request.readyState === XMLHttpRequest.DONE) {
+                    if (request.status === 200) {
+                        document.getElementById('technologyTable').innerHTML = request.responseText;
+                    } else {
+                        console.error('Error fetching technology data: ' + request.status);
+                    }
+                }
+            };
+            request.open('GET', 'fetch_technology_data.php', true);
+            request.send();
+        }
+
+        window.onload = fetchTechnologyData;
+    </script>
+</body>
+</html>
